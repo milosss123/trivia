@@ -11,7 +11,7 @@ body {
 
 /* Pozadina za glavnu stranicu */
 body.main-page {
-    background-image: url('images/main-page1.png'); /* Slika za glavnu stranicu */
+    background-image: url('main-page1.png'); /* Slika za glavnu stranicu */
 }
 
 /* Glavna stranica - tema i broj pitanja */
