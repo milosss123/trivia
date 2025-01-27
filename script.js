@@ -80,11 +80,11 @@ const images = {
     matematika: 'matematika.jpg', // Slika za matematiku
     istorija: 'istorija.jpg'     // Slika za istoriju
 
-    // Učitavanje zvučnih fajlova
+
+}; 
+// Učitavanje zvučnih fajlova
 const correctSound = new Audio('correct.mp3');
 const wrongSound = new Audio('wrong.mp3');
-
-};
 
 function selectTheme(topic) {
     currentTopic = topic;
