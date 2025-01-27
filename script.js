@@ -72,7 +72,7 @@ let currentTopic = "";
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let numberOfQuestions = 5;
-
+let score = 0;
 
 
 const images = {
