@@ -76,12 +76,12 @@ let correctAnswers = 0;
 let wrongAnswers = 0;
 
 function checkAnswer(answer) {
-    const question = selectedQuestions[currentQuestionIndex];
+    const question = currentQuestions[currentQuestionIndex];
 
     if (answer === question.correct) {
-        correctAnswers++;
+        correctAnswers++; // Povećaj broj tačnih odgovora
     } else {
-        wrongAnswers++;
+        wrongAnswers++; // Povećaj broj netačnih odgovora
     }
 
     currentQuestionIndex++;
@@ -98,6 +98,7 @@ function endQuiz() {
         <p>Netačnih odgovora: ${wrongAnswers}</p>
     `;
 }
+
 
 const images = {
     geografija: 'geografija.jpg', // Slika za geografiju
