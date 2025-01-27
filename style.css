@@ -1,110 +1,40 @@
-/* Generalni stilovi */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
     background-size: cover;
     background-position: center;
-    text-align: center; /* Centriranje teksta */
-    transition: background-image 0.5s ease;
-}
-
-/* Pozadina za glavnu stranicu */
-body.main-page {
-    background-image: url('main-page1.png'); /* Slika za glavnu stranicu */
-}
-
-/* Glavna stranica - tema i broj pitanja */
-.theme-selection {
+    background-repeat: no-repeat;
+    color: #fff;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Centriranje po vertikali */
-    color: rgb(0, 0, 0);
+    height: 100vh;
+    text-align: center;
 }
 
-.theme-selection h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.theme-selection button {
-    margin: 10px 0;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: rgb(255, 0, 0);
-    color: white;
-}
-
-.theme-selection button:hover {
-    background-color: rgb(0, 255, 34);
-}
-
-.question-count-container label {
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.question-count-container select {
-    padding: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-/* Stilovi za kviz */
-.quiz-container {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 50px auto;
-    color: white;
+.hidden {
     display: none;
 }
 
-.question-container {
-    margin-bottom: 20px;
+#main-page, #quiz-container, #result-page {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
 }
 
-.answer-buttons {
-    display: flex;
-    flex-direction: column;
-}
-
-.answer-btn {
-    background-color: #1d1d1d;
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
     border: none;
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.answer-btn:hover {
-    background-color: #444;
-}
-
-#next-btn, #reset-btn {
-    background-color: #28a745;
-    border: none;
-    color: white;
-    padding: 10px;
-    margin-top: 20px;
     cursor: pointer;
-    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
 }
 
-#next-btn:hover, #reset-btn:hover {
-    background-color: #218838;
-}
-
-#result {
-    margin-top: 10px;
+button:hover {
+    background-color: #0056b3;
 }

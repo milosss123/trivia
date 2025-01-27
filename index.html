@@ -7,41 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="main-page">
-    <!-- Glavna stranica: izbor teme i broj pitanja -->
-    <div class="theme-selection">
-        <h2>Izaberite temu</h2>
-        <button onclick="selectTheme('geografija')">Geografija</button>
-        <button onclick="selectTheme('matematika')">Matematika</button>
-        <button onclick="selectTheme('istorija')">Istorija</button>
-
-        <!-- Izbor broja pitanja -->
-        <div class="question-count-container">
-            <label for="question-count">Izaberite broj pitanja (5-20):</label>
-            <select id="question-count" name="question-count">
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-            </select>
-        </div>
-
-        <button class="start-quiz-btn" onclick="startQuiz()">Počni kviz</button>
+    <div id="main-page">
+        <h1>Dobrodošli u Trivia Quiz</h1>
+        <label for="tema">Izaberite temu:</label>
+        <select id="tema">
+            <option value="geografija">Geografija</option>
+            <option value="matematika">Matematika</option>
+            <option value="istorija">Istorija</option>
+        </select>
+        <label for="broj-pitanja">Broj pitanja (5-20):</label>
+        <input type="number" id="broj-pitanja" min="5" max="20" value="5">
+        <button id="start-btn" onclick="startQuiz()">Počni kviz</button>
     </div>
 
-    <!-- Kvizački deo -->
-    <div class="quiz-container">
+    <div id="quiz-container" class="hidden">
         <div class="question-container">
             <p id="question">Pitanje će biti ovde</p>
         </div>
@@ -51,9 +30,14 @@
             <button class="answer-btn" onclick="checkAnswer('c')">Odgovor C</button>
             <button class="answer-btn" onclick="checkAnswer('d')">Odgovor D</button>
         </div>
+        <button id="next-btn" onclick="nextQuestion()" class="hidden">Sledeće pitanje</button>
         <p id="result"></p>
-        <button id="next-btn" onclick="nextQuestion()">Sledeće pitanje</button>
-        <button id="reset-btn" onclick="resetQuiz()">Resetuj kviz</button>
+    </div>
+
+    <div id="result-page" class="hidden">
+        <h2>Kraj kviza!</h2>
+        <p id="final-result"></p>
+        <button onclick="resetQuiz()">Resetuj kviz</button>
     </div>
 
     <script src="script.js"></script>
