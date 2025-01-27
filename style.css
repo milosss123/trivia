@@ -1,110 +1,65 @@
-/* Generalni stilovi */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: center;
-    text-align: center; /* Centriranje teksta */
-    transition: background-image 0.5s ease;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
 }
 
-/* Pozadina za glavnu stranicu */
-body.main-page {
-    background-image: url('main-page1.png'); /* Slika za glavnu stranicu */
-}
-
-/* Glavna stranica - tema i broj pitanja */
-.theme-selection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Centriranje po vertikali */
-    color: rgb(0, 0, 0);
-}
-
-.theme-selection h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.theme-selection button {
-    margin: 10px 0;
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
     padding: 10px 20px;
     font-size: 16px;
-    border: none;
-    border-radius: 5px;
+    margin: 5px;
     cursor: pointer;
-    background-color: rgb(255, 0, 0);
-    color: white;
+    border-radius: 5px;
 }
 
-.theme-selection button:hover {
-    background-color: rgb(0, 255, 34);
+button:hover {
+    background-color: #2980b9;
 }
 
-.question-count-container label {
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: block;
+button:disabled {
+    background-color: #7f8c8d;
 }
 
-.question-count-container select {
-    padding: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-/* Stilovi za kviz */
-.quiz-container {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+#quiz-container {
     max-width: 600px;
-    margin: 50px auto;
-    color: white;
-    display: none;
+    margin: 0 auto;
 }
 
-.question-container {
+#question-container {
     margin-bottom: 20px;
 }
 
-.answer-buttons {
-    display: flex;
-    flex-direction: column;
+#next-btn {
+    background-color: #2ecc71;
 }
 
-.answer-btn {
-    background-color: #1d1d1d;
-    border: none;
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+#next-btn:hover {
+    background-color: #27ae60;
+}
+.geografija {
+    background-image: url('geografija.jpg'); /* Put do tvoje slike za Geografiju */
 }
 
-.answer-btn:hover {
-    background-color: #444;
+.matematika {
+    background-image: url('matematika.jpg'); /* Put do tvoje slike za Matematiku */
 }
 
-#next-btn, #reset-btn {
-    background-color: #28a745;
-    border: none;
-    color: white;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 5px;
+.istorija {
+    background-image: url('istorija.jpg'); /* Put do tvoje slike za Istoriju */
+}
+body {
+    background-image: url('main-page1.png');
+    background-size: cover;
+    background-position: center;
 }
 
-#next-btn:hover, #reset-btn:hover {
-    background-color: #218838;
-}
-
-#result {
-    margin-top: 10px;
+.theme-selection {
+    background-image: url('main-page1.png');
+    background-size: cover;
+    background-position: center;
 }

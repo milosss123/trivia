@@ -68,58 +68,42 @@ const questions = {
 // Sledi ostatak koda koji sam prethodno dao...
 
 
-let currentTopic = "";
 let currentQuestions = [];
 let currentQuestionIndex = 0;
-let numberOfQuestions = 5;
-let score = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
 
 
-const images = {
-    geografija: 'geografija.jpg', // Slika za geografiju
-    matematika: 'matematika.jpg', // Slika za matematiku
-    istorija: 'istorija.jpg'     // Slika za istoriju
 
-
-}; 
-// Učitavanje zvučnih fajlova
-
-
-function selectTheme(topic) {
-    currentTopic = topic;
-
-    // Proveravamo da li tema ima sliku
-    if (images[topic]) {
-        // Postavljamo sliku za temu kao pozadinu
-        document.body.style.backgroundImage = `url("${images[topic]}")`;
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
-    } else {
-        // Ako nema slika, postavljamo podrazumevanu pozadinu
-        document.body.style.backgroundImage = "";
-    }
-}
-
-function startQuiz() {
-    numberOfQuestions = document.getElementById('question-count').value;
-    currentQuestions = questions[currentTopic].slice(0, numberOfQuestions);
+// Funkcija za početak kviza
+function startQuiz(theme) {
+    currentQuestions = questions[theme];
     currentQuestionIndex = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
 
-    document.querySelector('.theme-selection').style.display = 'none';
-    document.querySelector('.quiz-container').style.display = 'block';
-
-    showQuestion();
+    document.getElementById('welcome-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    loadQuestion();
 }
 
-function showQuestion() {
-    const question = currentQuestions[currentQuestionIndex];
-    document.getElementById('question').textContent = question.question;
-    document.querySelectorAll('.answer-btn').forEach((btn, index) => {
+// Funkcija za učitavanje sledećeg pitanja
+function loadQuestion() {
+    const currentQuestion = currentQuestions[currentQuestionIndex];
+    document.getElementById('question-text').innerText = currentQuestion.question;
+
+    // Učitavanje odgovora
+    const answers = currentQuestion.answers;
+    document.querySelectorAll('.answer-btn').forEach((button, index) => {
         const answerKey = ['a', 'b', 'c', 'd'][index];
-        btn.textContent = question.answers[answerKey];
+        button.innerText = `${answerKey.toUpperCase()}: ${answers[answerKey]}`;
     });
+
+    // Sakrivanje dugmeta za sledeće pitanje dok korisnik ne odgovori
+    document.getElementById('next-btn').style.display = 'none';
 }
 
+// Funkcija za proveru odgovora
 function checkAnswer(selectedAnswer) {
     const currentQuestion = currentQuestions[currentQuestionIndex];
     const correctAnswer = currentQuestion.correctAnswer;
@@ -139,17 +123,14 @@ function checkAnswer(selectedAnswer) {
     document.getElementById('next-btn').style.display = 'block';
 }
 
+// Funkcija za prelazak na sledeće pitanje
 function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < currentQuestions.length) {
-        document.getElementById('result').textContent = '';
-        showQuestion();
+        loadQuestion();
     } else {
-        document.getElementById('result').textContent = 'Kviz je završen!';
-        document.getElementById('next-btn').style.display = 'none';
+        alert(`Kviz je završen! Tačni odgovori: ${correctAnswers}, Netačni odgovori: ${wrongAnswers}`);
+        document.getElementById('quiz-screen').style.display = 'none';
+        document.getElementById('welcome-screen').style.display = 'block';
     }
-}
-
-function resetQuiz() {
-    location.reload();
 }
