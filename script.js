@@ -72,6 +72,32 @@ let currentTopic = "";
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let numberOfQuestions = 5;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
+function checkAnswer(answer) {
+    const question = selectedQuestions[currentQuestionIndex];
+
+    if (answer === question.correct) {
+        correctAnswers++;
+    } else {
+        wrongAnswers++;
+    }
+
+    currentQuestionIndex++;
+    loadQuestion();
+}
+
+function endQuiz() {
+    document.getElementById('quiz-container').classList.add('hidden');
+    document.getElementById('result-page').classList.remove('hidden');
+
+    // Prikazivanje rezultata na kraju kviza
+    document.getElementById('final-result').innerHTML = `
+        <p>Tačnih odgovora: ${correctAnswers}</p>
+        <p>Netačnih odgovora: ${wrongAnswers}</p>
+    `;
+}
 
 const images = {
     geografija: 'geografija.jpg', // Slika za geografiju
