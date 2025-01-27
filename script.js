@@ -83,8 +83,7 @@ const images = {
 
 }; 
 // Učitavanje zvučnih fajlova
-const correctSound = new Audio('correct.mp3');
-const wrongSound = new Audio('wrong.mp3');
+
 
 function selectTheme(topic) {
     currentTopic = topic;
@@ -121,13 +120,23 @@ function showQuestion() {
     });
 }
 
-function checkAnswer(answer) {
-    const question = currentQuestions[currentQuestionIndex];
-    if (answer === question.correct) {
-        document.getElementById('result').textContent = 'Tačan odgovor!';
+function checkAnswer(selectedAnswer) {
+    const currentQuestion = currentQuestions[currentQuestionIndex];
+    const correctAnswer = currentQuestion.correctAnswer;
+
+    // Provera da li je odgovor tačan
+    if (selectedAnswer === correctAnswer) {
+        alert("Tačan odgovor!");
     } else {
-        document.getElementById('result').textContent = 'Netačan odgovor!';
+        alert("Netačan odgovor!");
     }
+
+    // Onemogućiti sve dugmadi za odgovore nakon što je odgovoreno
+    const buttons = document.querySelectorAll('.answer-btn');
+    buttons.forEach(button => button.disabled = true);
+
+    // Prikazivanje dugmeta za sledeće pitanje
+    document.getElementById('next-btn').style.display = 'block';
 }
 
 function nextQuestion() {
@@ -143,17 +152,4 @@ function nextQuestion() {
 
 function resetQuiz() {
     location.reload();
-}
-function checkAnswer(answer) {
-    const question = currentQuestions[currentQuestionIndex];
-
-    if (answer === question.correct) {
-        correctAnswers++;
-        correctSound.play();  // Svira zvuk za tačan odgovor
-        document.getElementById('result').textContent = 'Tačan odgovor!';
-    } else {
-        wrongAnswers++;
-        wrongSound.play();  // Svira zvuk za netačan odgovor
-        document.getElementById('result').textContent = 'Netačan odgovor!';
-    }
 }
