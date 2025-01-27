@@ -9,10 +9,11 @@
 <body class="main-page">
     <!-- Glavna stranica: izbor teme i broj pitanja -->
     <div class="theme-selection">
-        <h2>Izaberite temu</h2>
         <button onclick="selectTheme('geografija')">Geografija</button>
         <button onclick="selectTheme('matematika')">Matematika</button>
         <button onclick="selectTheme('istorija')">Istorija</button>
+        <input type="number" id="question-count" min="1" max="20" value="5">
+        <button onclick="startQuiz()">Počni Kviz</button>
 
         <!-- Izbor broja pitanja -->
         <div class="question-count-container">
@@ -37,7 +38,7 @@
             </select>
         </div>
 
-        <button class="start-quiz-btn" onclick="startQuiz()">Počni kviz</button>
+        
     </div>
 
     <!-- Kvizački deo -->
