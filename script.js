@@ -72,38 +72,18 @@ let currentTopic = "";
 let currentQuestions = [];
 let currentQuestionIndex = 0;
 let numberOfQuestions = 5;
-let correctAnswers = 0;
-let wrongAnswers = 0;
 
-function checkAnswer(answer) {
-    const question = currentQuestions[currentQuestionIndex];
-
-    if (answer === question.correct) {
-        correctAnswers++; // Povećaj broj tačnih odgovora
-    } else {
-        wrongAnswers++; // Povećaj broj netačnih odgovora
-    }
-
-    currentQuestionIndex++;
-    loadQuestion();
-}
-
-function endQuiz() {
-    document.getElementById('quiz-container').classList.add('hidden');
-    document.getElementById('result-page').classList.remove('hidden');
-
-    // Prikazivanje rezultata na kraju kviza
-    document.getElementById('final-result').innerHTML = `
-        <p>Tačnih odgovora: ${correctAnswers}</p>
-        <p>Netačnih odgovora: ${wrongAnswers}</p>
-    `;
-}
 
 
 const images = {
     geografija: 'geografija.jpg', // Slika za geografiju
     matematika: 'matematika.jpg', // Slika za matematiku
     istorija: 'istorija.jpg'     // Slika za istoriju
+
+    // Učitavanje zvučnih fajlova
+const correctSound = new Audio('correct.mp3');
+const wrongSound = new Audio('wrong.mp3');
+
 };
 
 function selectTheme(topic) {
@@ -163,4 +143,17 @@ function nextQuestion() {
 
 function resetQuiz() {
     location.reload();
+}
+function checkAnswer(answer) {
+    const question = currentQuestions[currentQuestionIndex];
+
+    if (answer === question.correct) {
+        correctAnswers++;
+        correctSound.play();  // Svira zvuk za tačan odgovor
+        document.getElementById('result').textContent = 'Tačan odgovor!';
+    } else {
+        wrongAnswers++;
+        wrongSound.play();  // Svira zvuk za netačan odgovor
+        document.getElementById('result').textContent = 'Netačan odgovor!';
+    }
 }
